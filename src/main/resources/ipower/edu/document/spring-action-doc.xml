@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--公文管理
+	<bean id="documentAction" class="ipower.edu.document.action.DocumentAction">
+		<property name="service" ref="documentService"/>
+	</bean> -->
+	<!--公文检索-->
+	<bean id="documentSearchAction" class="ipower.edu.document.action.DocumentSearchAction">
+		<property name="searchService" ref="documentSearchService"/>
+	</bean>
+	<!--公文收发 -->
+	<bean id="receiveAction" class="ipower.edu.document.action.ReceiveAction">
+		<property name="service" ref="documentService"/>
+	</bean>
+	
+	<!--公文上传 -->
+	<bean id="uploadAction" class="ipower.edu.document.action.UploadAction">
+		<property name="storeFolder" value="${upload_StoreFolder}"/>
+		<property name="documentAttachmentService" ref="documentAttachmentService"/>
+	</bean>
+	
+	<!--流程管理 -->
+	<bean id="processAction" class="ipower.edu.document.action.ProcessAction">
+		<property name="service" ref="procesService"/>
+	</bean>
+	<!--流程步骤管理 -->
+	<bean id="stepAction" class="ipower.edu.document.action.StepAction">
+		<property name="service" ref="stepService"/>
+	</bean>
+	<!--流程步骤参数管理-->
+	<bean id="parameterAction" class="ipower.edu.document.action.ParameterAction">
+		<property name="service" ref="parameterService"/>
+	</bean>
+	<!--流程步骤用户管理 -->
+	<bean id="stepUserAction" class="ipower.edu.document.action.StepUserAction">
+		<property name="service" ref="stepUserService"/>
+	</bean>
+	<!--流程步骤变迁管理 -->
+	<bean id="transitionAction" class="ipower.edu.document.action.TransitionAction">
+		<property name="service" ref="transitionService"/>
+	</bean>
+	<!--流程步骤变迁参数映射管理 -->
+	<bean id="parameterMappingAction" class="ipower.edu.document.action.ParameterMappingAction">
+		<property name="service" ref="parameterMappingService"/>
+	</bean>
+	<!--流程步骤变迁条件管理 -->
+	<bean id="conditionAction" class="ipower.edu.document.action.ConditionAction">
+		<property name="service" ref="conditionService"/>
+	</bean>
+	<!--流程实例管理 -->
+	<bean id="processInstanceAction" class="ipower.edu.document.action.ProcessInstanceAction">
+		<property name="service" ref="processInstanceService"/>
+	</bean>
+	
+	<!--流程修复初始化 -->
+	<bean id="repeatAction" class="ipower.edu.document.action.RepeatAction">
+		<property name="processService" ref="procesService"/>
+	</bean>
+</beans>

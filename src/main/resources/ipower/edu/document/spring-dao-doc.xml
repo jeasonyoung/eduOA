@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--流程 -->
+	<bean id="processDao" class="ipower.edu.document.dao.impl.ProcessDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程步骤 -->
+	<bean id="stepDao" class="ipower.edu.document.dao.impl.StepDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程步骤参数 -->
+	<bean id="parameterDao" class="ipower.edu.document.dao.impl.ParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程步骤用户 -->
+	<bean id="stepUserDao" class="ipower.edu.document.dao.impl.StepUserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程变迁 -->
+	<bean id="transitionDao" class="ipower.edu.document.dao.impl.TransitionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程变迁参数映射 -->
+	<bean id="parameterMappingDao" class="ipower.edu.document.dao.impl.ParameterMappingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程变迁规则 -->
+	<bean id="conditionDao" class="ipower.edu.document.dao.impl.ConditionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程实例 -->
+	<bean id="processInstanceDao" class="ipower.edu.document.dao.impl.ProcessInstanceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--流程步骤任务实例 -->
+	<bean id="stepTaskInstanceDao" class="ipower.edu.document.dao.impl.StepTaskInstanceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!--公文Dao-->
+	<bean id="documentDao" class="ipower.edu.document.dao.impl.DocumentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--公文附件Dao-->
+	<bean id="documentAttachmentDao" class="ipower.edu.document.dao.impl.DocumentAttachmentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

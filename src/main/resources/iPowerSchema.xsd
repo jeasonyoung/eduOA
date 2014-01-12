@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://ipower.org/" xmlns="http://ipower.org" elementFormDefault="qualified">
+	
+	<xs:element name="module">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="module" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="uri" type="xs:string" use="optional"/>
+			<xs:attribute name="order" type="xs:int" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="system">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="module" minOccurs="0" maxOccurs="unbounded"/>		
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="sign" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ipower">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="system" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="verion" type="xs:double" default="1.0" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

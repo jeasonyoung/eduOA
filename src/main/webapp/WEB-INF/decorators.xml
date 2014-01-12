@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--defaultdir指定装饰器文件所在的路径-->
+<decorators defaultdir="/WEB-INF/page/layout">
+   <!--excludes节点则指定了哪些路径的请求不使用任何模板-->
+   <excludes>
+        <pattern>/layout/*</pattern>
+        <pattern>/css/*</pattern>
+        <pattern>/upload/*</pattern>
+    </excludes>
+    <!--decorator节点指定了模板的位置和文件名，通过pattern来指定哪些路径引用哪个模板-->
+    <decorator name="main" page="TemplateFrameSet.jsp">
+        <pattern>/index.action</pattern>
+        <!-- <pattern>/desk.action</pattern> -->
+    </decorator>
+</decorators>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.edu.document.domain">
+	<!--流程实例 -->
+	<class name="ProcessInstance" table="tbl_flow_process_instance">
+		<!--流程实例ID-->
+		<id name="id" column="process_instance_id" type="string" length="64"/>
+		<!--所属流程 -->
+		<many-to-one name="process" column="process_id" class="Process" fetch="join" cascade="save-update"/>
+		<!--流程实例名称 -->
+		<property name="name" column="process_instance_name" type="string" length="32"/>
+		<!--实例状态(1-运行,2-错误,3-结束)-->
+		<property name="status" column="process_instance_status" type="integer"/>
+		<!--流程开始时间-->
+		<property name="begin" column="process_instance_begin" type="date"/>
+		<!--流程结束时间-->
+		<property name="end" column="process_instance_end" type="date"/>
+		<!--备注 -->
+		<property name="remarks" column="process_instance_remarks" type="string"/>
+		<!--步骤任务实例集合 -->
+		<set name="stepTaskInstances" inverse="false" cascade="all" lazy="true">
+			<key column="process_instance_id"/>
+			<one-to-many class="StepTaskInstance"/>
+		</set>
+	</class>
+	<!--步骤任务实例-->
+	<class name="StepTaskInstance" table="tbl_flow_step_task_instance">
+		<!--步骤任务实例ID-->
+		<id name="id" column="step_task_instance_id" type="string" length="64">
+			<generator class="uuid"/>
+		</id>
+		<!--步骤任务实例名称 -->
+		<property name="name" column="step_task_instance_name" type="string" length="32"/>
+		<!--步骤任务用户ID -->
+		<property name="userId" column="step_task_instance_userId" type="string" length="32"/>
+		<!--步骤任务用户名 -->
+		<property name="userName" column="step_task_instance_userName" type="string" length="32"/>
+		<!--步骤任务实例url -->
+		<property name="url" column="step_task_instance_url" type="string" length="1024"/>
+		<!--步骤任务实例数据 -->
+		<property name="data" column="step_task_instance_data" type="string"/>
+		<!--步骤任务实例类型(1-待办，2-待阅) -->
+		<property name="type" column="step_task_instance_type" type="integer"/>
+		<!--步骤任务实例状态(0-未处理，1-处理完成，2-忽略跳过) -->
+		<property name="status" column="step_task_instance_status" type="integer"/>
+		<!--步骤任务实例生成时间 -->
+		<property name="time" column="step_task_instance_time" type="date"/>
+		<!--所属流程实例 -->
+		<many-to-one name="processInstance" column="process_instance_id" class="ProcessInstance" fetch="join" cascade="save-update"/>
+		<!--所属流程步骤 -->
+		<many-to-one name="step" column="step_id" class="Step" fetch="join" cascade="save-update"/>
+	</class>
+</hibernate-mapping>

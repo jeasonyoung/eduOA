@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.edu.document.domain">
+	<!--流程定义 -->
+	<class name="Process" table="tbl_flow_process">
+		<!--流程ID-->
+		<id name="id" column="process_id" type="string" length="64"/>
+		<!--流程名称 -->
+		<property name="name" column="process_name" type="string" not-null="true" unique="true" length="32"/>
+		<!--流程状态(1-启用,0-禁用) -->
+		<property name="status" column="process_status" type="integer"/>
+		<!--流程描述 -->
+		<property name="description" column="process_description" type="string"/>
+		<!--流程步骤集合 -->
+		<set name="steps" inverse="false" cascade="all" lazy="true">
+			<key column="process_id"/>
+			<one-to-many class="Step"/>
+		</set>
+		<!--流程变迁集合 -->
+		<set name="transitions" inverse="false" cascade="all" lazy="true">
+			<key column="process_id"/>
+			<one-to-many class="Transition"/>
+		</set>
+	</class>
+</hibernate-mapping>

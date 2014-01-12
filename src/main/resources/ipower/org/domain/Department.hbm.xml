@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.org.domain">
+	<!--组织部门-->
+	<class name="Department" table="tbl_org_department">
+		<!--组织部门ID-->
+		<id name="departmentId" column="dept_id" type="string" length="64"/>
+		<!--组织部门名称 -->
+		<property name="departmentName" column="dept_name" type="string" not-null="true" unique="true" length="32"/>
+		<!--组织部门排序 -->
+		<property name="departmentOrder" column="dept_order" type="integer"/>
+		<!--下级组织部门 -->
+		<set name="childrens" cascade="save-update" inverse="true" lazy="true">
+			<key column="parent_dept_id"/>
+			<one-to-many class="Department"/>
+		</set>
+		<!--上级组织部门 -->
+		<many-to-one name="parent" column="parent_dept_id" cascade="none" class="Department"/>
+	</class>
+</hibernate-mapping>

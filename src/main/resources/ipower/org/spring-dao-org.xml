@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--职务岗位Dao -->
+	<bean id="postDao" class="ipower.org.dao.impl.PostDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--组织部门Dao-->
+	<bean id="deptDao" class="ipower.org.dao.impl.DepartmentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--用户Dao-->
+	<bean id="userDao" class="ipower.org.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--角色Dao-->
+	<bean id="roleDao" class="ipower.org.dao.impl.RoleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--角色菜单Dao-->
+	<bean id="roleMenuDao" class="ipower.org.dao.impl.RoleMenuDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--用户角色Dao-->
+	<bean id="userRoleDao" class="ipower.org.dao.impl.UserRoleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--首页 -->
+	<bean name="indexAction" class="ipower.edu.action.IndexAction">
+		<property name="menuService" ref="menuService"/>
+	</bean>
+	<!--办公桌面 -->
+	<!-- <bean name="deskAction" class="ipower.edu.action.DeskAction"/> -->
+	<!--菜单-->
+	<bean name="menuAction" class="ipower.edu.action.MenuAction">
+		<property name="menuService" ref="menuService"/>
+	</bean>
+	<!--druid -->
+	<bean name="druidAction" class="ipower.edu.action.DataSourceAction"/>
+	
+	<!--组织架构-->
+	<import resource="ipower/org/spring-action-org.xml"/>
+	<!--公文管理 -->
+	<import resource="ipower/edu/document/spring-action-doc.xml"/>
+</beans>

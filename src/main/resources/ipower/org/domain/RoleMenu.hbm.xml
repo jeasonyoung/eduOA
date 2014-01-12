@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.org.domain">
+	<!--角色菜单 -->
+	<class name="RoleMenu" table="tbl_org_rolemenu">
+		<composite-id>
+			<!--角色 -->
+			<key-many-to-one name="role" column="role_id" class="Role"/>
+			<!--菜单ID -->
+			<key-property name="menuId" column="menu_id" type="string" length="64"/>
+		</composite-id>
+	</class>
+</hibernate-mapping>

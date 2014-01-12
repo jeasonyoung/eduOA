@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--菜单服务-->
+	<bean id="menuService" class="ipower.edu.service.impl.MenuServiceImpl"> 
+		<property name="menuFile" value="main_menus.xml"/>
+	</bean>
+	<!--组织架构服务 -->
+	<import resource="ipower/org/spring-service-org.xml"/>
+	<!--公文管理服务 -->
+	<import resource="ipower/edu/document/spring-service-doc.xml"/>
+</beans>

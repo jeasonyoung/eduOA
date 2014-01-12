@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.org.domain">
+	<!--职务岗位 -->
+	<class name="Post" table="tbl_org_post">
+		<!--职务岗位ID-->
+		<id name="id" column="post_id" type="string" length="64"/>
+		<!--职务岗位名称 -->
+		<property name="name" column="post_name" type="string" not-null="true" unique="true" length="32"/>
+		<!--职务岗位职级 -->
+		<property name="level" column="post_level" type="integer"/>
+	</class>
+</hibernate-mapping>

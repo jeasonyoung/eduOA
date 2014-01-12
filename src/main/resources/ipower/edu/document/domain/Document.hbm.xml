@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.edu.document.domain">
+	<!--公文 -->
+	<class name="Document" table="tbl_edu_document">
+		<!--公文ID -->
+		<id name="id" column="doc_id" type="string" length="64"/>
+		<!--收文登记号-->
+		<property name="receiveCode" column="doc_receiveCode" type="string" length="32"/>
+		<!--文件字号-->
+		<property name="code" column="doc_code" type="string" length="32"/>
+		<!--文件标题 -->
+		<property name="title" column="doc_title" type="string" length="128"/>
+		<!--来文单位 -->
+		<property name="fromUnit" column="doc_fromUnit" type="string" length="64"/>
+		<!--文件标志(1-普通件) -->
+		<property name="flag" column="doc_flag" type="integer"/>
+		<!--发文号-->
+		<property name="issueCode" column="doc_issueCode" type="string" length="32"/>
+		<!--行文登记号-->
+		<property name="regCode" column="doc_regCode" type="string" length="32"/>
+		<!--收文日期-->
+		<property name="receiveDate" column="doc_receiveDate" type="date"/>
+		<!--收文份数 -->
+		<property name="receiveCount" column="doc_receiveCount" type="integer"/>
+		<!--登记人 -->
+		<property name="regEmployee" column="doc_regEmployee" type="string" length="20"/>
+		<!--来文联系人-->
+		<property name="fromLinkEmployee" column="doc_fromLinkEmployee" type="string" length="20"/>
+		<!--电话-->
+		<property name="fromLinkTel" column="doc_fromLinkTel" type="string" length="20"/>
+		<!--文件内容-->
+		<property name="content" column="doc_content" type="text"/>
+		<!--公文类型 (1-公文收发，2-公文起草)-->
+		<property name="type" column="doc_type" type="integer"/>
+		<!--公文状态(0-草稿,1-执行,2-归档)-->
+		<property name="status" column="doc_status" type="integer"/>
+		<!--公文附件集合-->
+		<set name="attachments" inverse="false" cascade="all" lazy="true">
+			<key column="doc_id"/>
+			<one-to-many class="DocumentAttachment"/>
+		</set>
+		<!--公文创建用户ID-->
+		<property name="createUserId" column="doc_createUserId" type="string" length="64"/>
+		<!--公文创建用户名称 -->
+		<property name="createUserName" column="doc_createUsername" type="string" length="32"/>
+		<!--公文创建日期 -->
+		<property name="createDate" column="doc_createDate" type="date"/>
+		<!--公文最后修改日期 -->
+		<property name="lastModifyDate" column="doc_lastModifyDate" type="date"/>
+		<!--办理记录 -->
+		<set name="records" inverse="false" cascade="all" lazy="true">
+			<key column="doc_id"/>
+			<one-to-many class="DocumentRecord"/>
+		</set>
+	</class>
+	<!--公文附件 -->
+	<class name="DocumentAttachment" table="tbl_edu_documentattachment">
+		<!--附件ID-->
+		<id name="id" column="attach_id" type="string" length="64">
+			<!-- <generator class="uuid"/> -->
+		</id>
+		<!--附件文件名-->
+		<property name="name" column="attach_name" type="string" length="128"/>
+		<!--附件存储路径-->
+		<property name="path" column="attach_path" type="string" length="512"/>
+		<!--附件上传时间-->
+		<property name="create" column="attach_create" type="date"/>
+		<!--所属文档 -->
+		<many-to-one name="document" column="doc_id" class="Document" fetch="join" cascade="save-update"/>
+	</class>
+	<!--公文记录 -->
+	<class name="DocumentRecord" table="tbl_edu_documentrecord">
+		<!--记录ID -->
+		<id name="id" column="record_id" type="string" length="64">
+			<generator class="uuid"/>
+		</id>
+		<!--记录类型 -->
+		<property name="type" column="record_type" type="integer"/>
+		<!--操作用户ID -->
+		<property name="userId" column="userId" type="string" length="64"/>
+		<!--操作用户名称 -->
+		<property name="userName" column="userName" type="string" length="32"/>
+		<!--记录内容 -->
+		<property name="content" column="record_content" type="string"/>
+		<!--记录时间 -->
+		<property name="time" column="record_time" type="date"/>
+		<!--所属文档 -->
+		<many-to-one name="document" column="doc_id" class="Document" fetch="join" cascade="save-update"/>
+	</class>
+</hibernate-mapping>

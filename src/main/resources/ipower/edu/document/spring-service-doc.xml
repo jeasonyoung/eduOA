@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--公文服务-->
+	<bean id="documentService" class="ipower.edu.document.service.impl.DocumentServiceImpl">
+		<property name="documentDao" ref="documentDao"/>
+		<property name="documentAttachmentService" ref="documentAttachmentService"/>
+	</bean>
+	<!--公文附件服务 -->
+	<bean id="documentAttachmentService" class="ipower.edu.document.service.impl.DocumentAttachmentServiceImpl">
+		<property name="storeFolder" value="${upload_StoreFolder}"/>
+		<property name="documentAttachmentDao" ref="documentAttachmentDao"/>
+		<property name="documentService" ref="documentService"/>
+	</bean>
+	<!--公文检索服务 -->
+	<bean id="documentSearchService" class="ipower.edu.document.service.impl.DocumentSearchServiceImpl">
+		<property name="documentService" ref="documentService"/>
+	</bean>
+	<!--流程服务 -->
+	<bean id="procesService" class="ipower.edu.document.service.impl.ProcessServiceImpl">
+		<property name="processDao" ref="processDao"/>
+	</bean>
+	<!--流程步骤服务 -->
+	<bean id="stepService" class="ipower.edu.document.service.impl.StepServiceImpl">
+		<property name="stepDao" ref="stepDao"/>
+		<property name="processService" ref="procesService"/>
+	</bean>
+	<!--流程步骤参数服务 -->
+	<bean id="parameterService" class="ipower.edu.document.service.impl.ParameterServiceImpl">
+		<property name="parameterDao" ref="parameterDao"/>
+		<property name="stepService" ref="stepService"/>
+	</bean>
+	<!--流程步骤用户服务 -->
+	<bean id="stepUserService" class="ipower.edu.document.service.impl.StepUserServiceImpl">
+		<property name="stepUserDao" ref="stepUserDao"/>
+		<property name="stepService" ref="stepService"/>
+	</bean>
+	<!--流程步骤变迁服务 -->
+	<bean id="transitionService" class="ipower.edu.document.service.impl.TransitionServiceImpl">
+		<property name="transitionDao" ref="transitionDao"/>
+		<property name="processService" ref="procesService"/>
+		<property name="stepService" ref="stepService"/>
+	</bean>
+	<!--流程步骤变迁参数映射服务 -->
+	<bean id="parameterMappingService" class="ipower.edu.document.service.impl.ParameterMappingServiceImpl">
+		<property name="parameterMappingDao" ref="parameterMappingDao"/>
+		<property name="transitionService" ref="transitionService"/>
+		<property name="parameterService" ref="parameterService"/>
+	</bean>
+	<!--流程步骤变迁条件服务 -->
+	<bean id="conditionService" class="ipower.edu.document.service.impl.ConditionServiceImpl">
+		<property name="conditionDao" ref="conditionDao"/>
+		<property name="transitionService" ref="transitionService"/>
+		<property name="parameterService" ref="parameterService"/>
+	</bean>
+	<!--流程实例服务 -->
+	<bean id="processInstanceService" class="ipower.edu.document.service.impl.ProcessInstanceServiceImpl">
+		<property name="processInstanceDao" ref="processInstanceDao"/>
+		<property name="stepTaskInstanceDao" ref="stepTaskInstanceDao"/>
+		<property name="processService" ref="procesService"/>
+		<property name="stepService" ref="stepService"/>
+	</bean>
+</beans>

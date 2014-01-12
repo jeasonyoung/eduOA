@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--oa -->
+	<package name="oa" extends="struts-default">
+		<!--首页框架 -->
+		<action name="index" class="indexAction">
+			<result name="success">/WEB-INF/page/index/index.jsp</result>
+			<result name="top">/WEB-INF/page/index/index_top.jsp</result>
+			<result name="leftmenu">/WEB-INF/page/index/index_leftmenu.jsp</result>
+			<result name="workspace">/WEB-INF/page/index/index_workspace.jsp</result>
+			<result name="footer">/WEB-INF/page/index/index_footer.jsp</result>
+		</action>
+		<!--工作桌面-->
+		<!-- <action name="desk" class="deskAction">
+			<result name="success">/WEB-INF/page/desk/desk.jsp</result>
+			<result name="top">/WEB-INF/page/desk/desk_top.jsp</result>
+			<result name="left">/WEB-INF/page/desk/desk_left.jsp</result>
+			<result name="workspace">/WEB-INF/page/desk/desk_workspace.jsp</result>
+			<result name="footer">/WEB-INF/page/desk/desk_footer.jsp</result>
+		</action> -->
+		<!--菜单数据 -->
+		<action name="menu" method="tree" class="menuAction"/>
+		<!--druid -->
+		<action name="druid" class="druidAction">
+			<result name="success">/druid/index.html</result>
+		</action>
+	</package>
+	<!--组织架构-->
+	<include file="/ipower/org/struts-action-org.xml"/>
+	<!--公文管理 -->
+	<include file="/ipower/edu/document/struts-action-doc.xml"/>
+</struts>

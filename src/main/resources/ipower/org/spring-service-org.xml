@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--职务岗位服务-->
+	<bean id="postService" class="ipower.org.service.impl.PostServiceImpl"> 
+		<property name="postDao" ref="postDao"/>
+	</bean>
+	<!--组织部门服务 -->
+	<bean id="deptService" class="ipower.org.service.impl.DepartmentServiceImpl"> 
+		<property name="departmentDao" ref="deptDao"/>
+	</bean>
+	<!--用户服务 -->
+	<bean id="userService" class="ipower.org.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"/>
+		<property name="postService" ref="postService"/>
+		<property name="departmentService" ref="deptService"/>
+	</bean>
+	<!--角色服务-->
+	<bean id="roleService" class="ipower.org.service.impl.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao"/>
+	</bean>
+	<!--角色菜单服务 -->
+	<bean id="roleMenuService" class="ipower.org.service.impl.RoleMenuServiceImpl">
+		<property name="roleMenuDao" ref="roleMenuDao"/>
+		<property name="roleDao" ref="roleDao"/>
+		<property name="menuService" ref="menuService"/>
+	</bean>
+	<!--用户角色服务 -->
+	<bean id="userRoleService" class="ipower.org.service.impl.UserRoleServiceImpl">
+		<property name="userRoleDao" ref="userRoleDao"/>
+		<property name="userDao" ref="userDao"/>
+		<property name="roleDao" ref="roleDao"/>
+	</bean>
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.org.domain">
+	<!--用户角色 -->
+	<class name="UserRole" table="tbl_org_userrole">
+		<composite-id>
+			<!--用户 -->
+			<key-many-to-one name="user" column="user_id" class="User"/>
+			<!--角色 -->
+			<key-many-to-one name="role" column="role_id" class="Role"/>
+		</composite-id>
+	</class>
+</hibernate-mapping>

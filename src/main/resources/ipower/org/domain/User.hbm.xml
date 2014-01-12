@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.org.domain">
+	<!--用户信息 -->
+	<class name="User" table="tbl_org_user">
+		<!--用户ID-->
+		<id name="id" column="user_id" type="string" length="64"/>
+		<!--用户名称 -->
+		<property name="name" column="user_name" type="string" not-null="true" length="32"/>
+		<!--用户账号 -->
+		<property name="account" column="user_account" type="string" not-null="true" unique="true" length="32"/>
+		<!--用户密码 -->
+		<property name="password" column="user_password" type="string" length="32"/>
+		<!--用户身份证号 -->
+		<property name="idCard" column="user_idCard" type="string" length="32"/>
+		<!--用户电子信箱-->
+		<property name="email" column="user_email" type="string" length="128"/>
+		<!--用户手机号码-->
+		<property name="mobile" column="user_mobile" type="string" length="32"/>
+		<!--用户性别-->
+		<property name="gender" column="user_gender" type="integer"/>
+		<!--用户状态-->
+		<property name="status" column="user_status" type="integer"/>
+		<!--用户生日-->
+		<property name="birthday" column="user_birthday" type="date"/>
+		<!--所属组织部门 -->
+		<many-to-one name="department" column="dept_id" class="Department" fetch="join" cascade="save-update"/>
+		<!--所属职务岗位 -->
+		<many-to-one name="post" column="post_id" class="Post" fetch="join" cascade="save-update"/>
+	</class>
+</hibernate-mapping>

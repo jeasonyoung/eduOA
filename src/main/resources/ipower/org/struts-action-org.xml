@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="org" extends="struts-default">
+		<!--职务岗位 -->
+		<action name="post" class="postAction">
+			<result name="list">/WEB-INF/page/org/post/post_list.jsp</result>
+			<result name="edit">/WEB-INF/page/org/post/post_edit.jsp</result>
+		</action>
+		<!--组织部门 -->
+		<action name="dept" class="deptAction">
+			<result name="list">/WEB-INF/page/org/dept/dept_list.jsp</result>
+			<result name="edit">/WEB-INF/page/org/dept/dept_edit.jsp</result>
+		</action>
+		<!--用户管理 -->
+		<action name="user" class="userAction">
+			<result name="list">/WEB-INF/page/org/user/user_list.jsp</result>
+			<result name="edit">/WEB-INF/page/org/user/user_edit.jsp</result>
+		</action>
+		<!--角色管理 -->
+		<action name="role" class="roleAction">
+			<result name="list">/WEB-INF/page/org/role/role_list.jsp</result>
+			<result name="edit">/WEB-INF/page/org/role/role_edit.jsp</result>
+		</action>
+		<!--角色菜单管理 -->
+		<action name="rolemenu" class="roleMenuAction">
+			<result name="list">/WEB-INF/page/org/rolemenu/rolemenu_list.jsp</result>
+			<result name="edit">/WEB-INF/page/org/rolemenu/rolemenu_edit.jsp</result>
+		</action>
+		<!--用户角色管理 -->
+		<action name="userrole" class="userRoleAction">
+			<result name="list">/WEB-INF/page/org/userrole/userrole_list.jsp</result>
+			<result name="edit">/WEB-INF/page/org/userrole/userrole_edit.jsp</result>
+		</action>
+	</package>
+</struts>

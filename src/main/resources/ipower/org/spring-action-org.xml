@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--职务岗位-->
+	<bean id="postAction" class="ipower.org.action.PostAction">
+		<property name="service" ref="postService"/>
+	</bean>
+	<!--组织部门-->
+	<bean id="deptAction" class="ipower.org.action.DepartmentAction">
+		<property name="service" ref="deptService"/>
+	</bean>
+	<!--用户管理 -->
+	<bean id="userAction" class="ipower.org.action.UserAction">
+		<property name="service" ref="userService"/>
+	</bean>
+	<!--角色管理 -->
+	<bean id="roleAction" class="ipower.org.action.RoleAction">
+		<property name="service" ref="roleService"/>
+	</bean>
+	<!--角色菜单管理 -->
+	<bean id="roleMenuAction" class="ipower.org.action.RoleMenuAction">
+		<property name="service" ref="roleMenuService"/>
+	</bean>
+	<!--用户角色管理 -->
+	<bean id="userRoleAction" class="ipower.org.action.UserRoleAction">
+		<property name="service" ref="userRoleService"/>
+	</bean>
+</beans>

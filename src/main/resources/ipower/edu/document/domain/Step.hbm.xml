@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.edu.document.domain">
+	<!--流程步骤定义 -->
+	<class name="Step" table="tbl_flow_step">
+		<!--流程步骤ID-->
+		<id name="id" column="step_id" type="string" length="64"/>
+		<!--流程步骤标示 -->
+		<property name="sign" column="step_sign" type="string" not-null="true" unique="true" length="32"/>
+		<!--流程步骤名称-->
+		<property name="name" column="step_name" type="string" length="32"/>
+		<!--流程步骤url-->
+		<property name="url" column="step_url" type="string"/>
+		<!--流程步骤类型(1-开始步骤 2-中间步骤 3-终结步骤) -->
+		<property name="type" column="step_type" type="integer"/>
+		<!--流程步骤排序-->
+		<property name="orderNo" column="step_order" type="integer"/>
+		<!--流程步骤描述-->
+		<property name="description" column="step_description" type="string"/>
+		<!--所属流程 -->
+		<many-to-one name="process" column="process_id" class="Process" fetch="join" cascade="save-update"/>
+		<!--步骤参数集合 -->
+		<set name="parameters" inverse="false" cascade="all" lazy="true">
+			<key column="step_id"/>
+			<one-to-many class="Parameter"/>
+		</set>
+		<!--步骤用户集合 -->
+		<set name="stepUsers" inverse="false" cascade="all" lazy="true">
+			<key column="step_id"/>
+			<one-to-many class="StepUser"/>
+		</set>
+	</class>
+	<!--步骤参数 -->
+	<class name="Parameter" table="tbl_flow_parameter">
+		<!--参数ID -->
+		<id name="id" column="parameter_id" type="string" length="64"/>
+		<!--所属步骤 -->
+		<many-to-one name="step" column="step_id" class="Step" fetch="join" cascade="save-update"/>
+		<!--步骤参数名称-->
+		<property name="name" column="parameter_name" type="string" length="32"/>
+		<!--步骤参数默认值-->
+		<property name="value" column="parameter_value" type="string" length="32"/>
+		<!--步骤参数描述-->
+		<property name="description" column="parameter_description" type="string"/>
+	</class>
+	<!--步骤用户-->
+	<class name="StepUser" table="tbl_flow_stepuser">
+		<composite-id>
+			<!--用户ID -->
+			<key-property name="userId" column="step_user_id" type="string" length="64"/>
+			<!--所属步骤 -->
+			<key-many-to-one name="step" column="step_id"/>
+		</composite-id>
+		<!--步骤用户名称-->
+		<property name="userName" column="step_user_name" type="string" length="32"/>
+		<!--类型(1-待办，2-待阅)-->
+		<property name="type" column="step_user_type" type="integer"/>
+	</class>
+</hibernate-mapping>

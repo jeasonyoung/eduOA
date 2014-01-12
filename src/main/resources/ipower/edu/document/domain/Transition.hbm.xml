@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.edu.document.domain">
+	<!--步骤变迁-->
+	<class name="Transition" table="tbl_flow_transition">
+		<!--变迁ID-->
+		<id name="id" column="trans_id" type="string" length="64"/>
+		<!--变迁名称 -->
+		<property name="name" column="trans_name" type="string" length="32"/>
+		<!--变迁逻辑(1-变迁条件并运算，2-变迁条件或运算) -->
+		<property name="rule" column="trans_rule" type="integer"/>
+		<!--所属流程 -->
+		<many-to-one name="process" column="process_id" class="Process" fetch="join" cascade="save-update"/>
+		<!--所属前驱步骤 -->
+		<many-to-one name="from" column="trans_from" class="Step" fetch="join" cascade="save-update"/>
+		<!--所属后驱步骤 -->
+		<many-to-one name="to" column="trans_to" class="Step" fetch="join" cascade="save-update"/>
+		<!--参数映射集合 -->
+		<set name="mappings" inverse="false" cascade="all" lazy="true">
+			<key column="trans_id"/>
+			<one-to-many class="ParameterMapping"/>
+		</set>
+		<!--变迁条件集合 -->
+		<set name="conditions" inverse="false" cascade="all" lazy="true">
+			<key column="trans_id"/>
+			<one-to-many class="Condition"/>
+		</set>
+	</class>
+	<!--前/后驱参数映射 -->
+	<class name="ParameterMapping" table="tbl_flow_mapping">
+		<composite-id>
+			<!--所属变迁规则 -->
+			<key-many-to-one name="transition" column="trans_id"/>
+			<!--前驱参数 -->
+			<key-many-to-one name="from" column="from_parameter_id"/>
+		</composite-id>
+		<!--后驱参数 -->
+		<many-to-one name="to" column="to_parameter_id" class="Parameter" fetch="join" cascade="save-update"/>
+	</class>
+	<!--变迁条件-->
+	<class name="Condition" table="tbl_flow_condition">
+		<composite-id>
+			<!--所属变迁规则 -->
+			<key-many-to-one name="transition" column="trans_id"/>
+			<!--所属参数 -->
+			<key-many-to-one name="parameter" column="parameter_id"/>
+			<!--比较值(包括运算符)-->
+			<key-property name="compareValue" column="condition_value" type="string" length="32"/>
+		</composite-id>
+	</class>
+</hibernate-mapping>

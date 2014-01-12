@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ipower.org.domain">
+	<!--角色 -->
+	<class name="Role" table="tbl_org_role">
+		<!--角色ID -->
+		<id name="id" column="role_id" type="string" length="64"/>
+		<!--角色名称 -->
+		<property name="name" column="role_name" type="string" not-null="true" unique="true" length="32"/>
+		<!--角色描述-->
+		<property name="description" column="role_description" type="string"/>
+	</class>
+</hibernate-mapping>

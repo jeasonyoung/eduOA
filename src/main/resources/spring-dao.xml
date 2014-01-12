@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!--组织架构数据访问 -->
+	<import resource="ipower/org/spring-dao-org.xml"/>
+	<!--公文管理数据访问 -->
+	<import resource="ipower/edu/document/spring-dao-doc.xml"/>
+</beans>

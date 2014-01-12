@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!--公文流转-->
+	<package name="doc" extends="struts-default">
+		<!--公文附件上传 -->
+		<action name="upload" class="uploadAction">
+			<interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <!-- <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param> -->
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">102400</param>
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+		</action>
+		<!--初始化 -->
+		<action name="repeat" class="repeatAction">
+			<result name="process">/WEB-INF/page/repeat/repeat_process.jsp</result>
+		</action>
+		<!--公文检索 -->
+		<action name="search" class="documentSearchAction">
+			<result name="list">/WEB-INF/page/doc/search/search_list.jsp</result>
+			<result name="edit">/WEB-INF/page/doc/search/search_edit.jsp</result>
+		</action>
+		<!--待办公文 -->
+		<action name="pending" class="documentSearchAction">
+			<result name="list">/WEB-INF/page/doc/pending/pending_list.jsp</result>
+			<result name="edit">/WEB-INF/page/doc/pending/pending_edit.jsp</result>
+		</action>
+		<!--已办公文 -->
+		<action name="pended" class="documentSearchAction">
+			<result name="list">/WEB-INF/page/doc/pended/pended_list.jsp</result>
+			<result name="edit">/WEB-INF/page/doc/pended/pended_edit.jsp</result>
+		</action>
+		<!--待阅公文 -->
+		<action name="beread" class="documentSearchAction">
+			<result name="list">/WEB-INF/page/doc/beread/beread_list.jsp</result>
+			<result name="edit">/WEB-INF/page/doc/beread/beread_edit.jsp</result>
+		</action>
+		<!--已阅公文 -->
+		<action name="readed" class="documentSearchAction">
+			<result name="list">/WEB-INF/page/doc/readed/readed_list.jsp</result>
+			<result name="edit">/WEB-INF/page/doc/readed/readed_edit.jsp</result>
+		</action>
+		<!--公文收发 -->
+		<action name="receive" class="receiveAction">
+			<result name="list">/WEB-INF/page/doc/receive/receive_list.jsp</result>
+			<result name="edit">/WEB-INF/page/doc/receive/receive_edit.jsp</result>
+		</action>
+		
+		<!--流程管理 -->
+		<action name="process" class="processAction">
+			<result name="list">/WEB-INF/page/flow/process/process_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/process/process_edit.jsp</result>
+		</action>
+		<!--流程步骤管理 -->
+		<action name="step" class="stepAction">
+			<result name="list">/WEB-INF/page/flow/step/step_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/step/step_edit.jsp</result>
+		</action>
+		<!--流程步骤参数管理 -->
+		<action name="parameter" class="parameterAction">
+			<result name="list">/WEB-INF/page/flow/parameter/parameter_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/parameter/parameter_edit.jsp</result>
+		</action>
+		<!--流程步骤用户管理 -->
+		<action name="stepuser" class="stepUserAction">
+			<result name="list">/WEB-INF/page/flow/stepuser/stepuser_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/stepuser/stepuser_edit.jsp</result>
+		</action>
+		<!--流程步骤变迁管理 -->
+		<action name="transition" class="transitionAction">
+			<result name="list">/WEB-INF/page/flow/transition/transition_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/transition/transition_edit.jsp</result>
+		</action>
+		<!--流程步骤变迁参数映射管理-->
+		<action name="mapping" class="parameterMappingAction">
+			<result name="list">/WEB-INF/page/flow/mapping/mapping_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/mapping/mapping_edit.jsp</result>
+		</action>
+		<!--流程步骤变迁条件管理 -->
+		<action name="condition" class="conditionAction">
+			<result name="list">/WEB-INF/page/flow/condition/condition_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/condition/condition_edit.jsp</result>
+		</action>
+		<!--流程实例管理 -->
+		<action name="processinstance" class="processInstanceAction">
+			<result name="list">/WEB-INF/page/flow/processinstance/processinstance_list.jsp</result>
+			<result name="edit">/WEB-INF/page/flow/processinstance/processinstance_edit.jsp</result>
+		</action>
+	</package>
+</struts>

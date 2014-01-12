@@ -1,0 +1,111 @@
+<!--
+默认样式
+//-->
+@CHARSET "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family:"宋体";
+    font-size: 12px;
+    font: inherit;
+    vertical-align: baseline;
+    
+    SCROLLBAR-FACE-COLOR: #E8E8E8; 
+	SCROLLBAR-HIGHLIGHT-COLOR: #E8E8E8;
+	SCROLLBAR-SHADOW-COLOR: #000000; 
+	SCROLLBAR-3DLIGHT-COLOR: #000000;
+	SCROLLBAR-ARROW-COLOR: #000000; 
+	SCROLLBAR-TRACK-COLOR: #E8E8E8;
+	SCROLLBAR-DARKSHADOW-COLOR: #E8E8E8;
+}
+input,select,textarea{
+   font-family:"宋体";
+   font-size: 12px;
+   border:solid 1px #D3D3D3;
+   background-color:#fff;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+	background:#fff;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+a{ text-decoration:none;}
+
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}
+img{ border:0px;}
+em{ font-style:normal;}
+strong{ font-weight:normal;}
+b{ font-weight:normal;}
+body{ font-size:12px;}
+
+input{ background:#fff;}
+textarea{ background:#fff;}
+select{ background:#fff;}
+button::-moz-focus-inner,input[type="reset"]::-moz-focus-inner,input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner,input[type="file"]>input[type="button"]::-moz-focus-inner
+{
+	border:none;padding:0;
+}
+
+.clearfix:after
+{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ".";
+    clear: both;
+    height: 0;
+}
+
+* html .clearfix
+{
+    zoom: 1;
+}
+*:first-child + html .clearfix
+{
+    zoom: 1;
+}
+
+/*reset部分结束*/
+/*编辑页面样式*/ 
+form.edit dd{
+	float:left;
+	width:98%; 
+	margin-top:5px;
+	margin-left:5px;
+}
+form.edit dd label{
+	float:left;
+	display:block;
+	margin-top:2px;
+	margin-right:2px;
+	width:64px;
+	text-align:right;
+}

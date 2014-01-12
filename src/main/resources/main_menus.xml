@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipower verion="1.0" xmlns="http://ipower.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ipower.org/ iPowerSchema.xsd ">
+  
+  <system id="ipower_edu_oa_desk_0000" sign="ipower.edu.oa.mydesk" name="我的办公室" desciprtion="负责办公室日常事务管理">
+  	<module id="ipower_org_0000" name="组织架构管理" uri="" order="1">
+  		<module id="ipower_org_0001" name="职级设置" uri="/org/post.action" order="1"/>
+  		<module id="ipower_org_0002" name="组织架构" uri="/org/dept.action" order="2"/>
+  		<module id="ipower_org_0003" name="用户管理" uri="/org/user.action" order="3"/>
+  	</module>
+  	<module id="ipower_security_0000" name="权限管理" uri="" order="2">
+  		<module id="ipower_security_0001" name="角色定义" uri="/org/role.action" order="1"/>
+  		<module id="ipower_security_0002" name="角色菜单" uri="/org/rolemenu.action" order="2"/>
+  		<module id="ipower_security_0003" name="用户角色" uri="/org/userrole.action" order="3"/>
+  	</module>
+  	<module id="ipower_flow_0000" name="初始化公文流程" uri="/flow/repeat!initProcesses.action" order="3"/>
+  </system>
+  
+  <system id="ipower_edu_oa_doc_0000" sign="ipower.edu.oa.doc" name="公文管理" desciption="负责公文管理">
+  	<module id="ipower_edu_oa_doc_0001" name="公文检索" uri="/doc/search.action" order="1"/>
+  	<module id="ipower_edu_oa_doc_0002" name="待办公文" uri="/doc/pending.action" order="2"/>
+  	<module id="ipower_edu_oa_doc_0003" name="待阅公文" uri="/doc/beread.action" order="3"/>
+  	<module id="ipower_edu_oa_doc_0004" name="已办公文" uri="/doc/pended.action" order="4"/>
+  	<module id="ipower_edu_oa_doc_0005" name="已阅公文" uri="/doc/readed.action" order="5"/>
+  	<module id="ipower_edu_oa_doc_0006" name="公文收发 " uri="/doc/receive.action" order="6"/>
+  	<module id="ipower_edu_oa_doc_0007" name="公文起草 " uri="" order="7"/>
+  </system>
+  
+  <system id="ipower_edu_flow_0000" sign="ipower.edu.flow" name="流程管理" desciption="负责流程管理">
+  	<module id="ipower_edu_flow_0001" name="流程定义" uri="/flow/process.action" order="1">
+  		<module id="ipower_edu_flow_0011" name="步骤设置" uri="/flow/step.action" order="1"/>
+  		<module id="ipower_edu_flow_0021" name="步骤参数" uri="/flow/parameter.action" order="2"/>
+  		<module id="ipower_edu_flow_0031" name="步骤用户" uri="/flow/stepuser.action" order="3"/>
+  		<module id="ipower_edu_flow_0041" name="步骤变迁" uri="/flow/transition.action" order="4">
+	  		<module id="ipower_edu_flow_0141" name="参数映射" uri="/flow/mapping.action" order="1"/>
+	  		<module id="ipower_edu_flow_0241" name="变迁条件" uri="/flow/condition.action" order="2"/>
+	  	</module>
+  	</module>
+  	<module id="ipower_edu_flow_0006" name="流程监控" uri="/flow/processinstance.action" order="6"/>
+  </system>
+  
+</ipower>
